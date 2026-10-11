@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f7f5"><meta name="description" content="打ち合わせ前に、持ち物をさっと確認。項目の追加・削除とチェックができるシンプルなチェックリスト。">
+<title>大石の打合せの持ち物 | Checklist</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;color:#23352e;background:#f5f7f5;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #94cdb7;outline-offset:4px}.shell{max-width:600px;margin:auto;padding:60px 24px 36px}.brand{display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:2px;color:#71847b;font-weight:650;margin-bottom:42px}.brand svg{width:21px;height:21px}h1{font-size:30px;letter-spacing:-1px;line-height:1.5;margin:0 0 10px;font-weight:700}.intro{font-size:14px;color:#78847e;line-height:1.9;margin:0 0 30px}.card{background:#fff;border:1px solid #e3e9e5;border-radius:20px;box-shadow:0 8px 28px #23352e05;overflow:hidden}.status{padding:25px 26px 22px;border-bottom:1px solid #edf0ee}.status-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.status-label{font-size:13px;color:#6b7a71}.count{font-size:14px;color:#819087}.count strong{font-size:22px;color:#2e6c51;margin-right:3px}.track{margin-top:16px;background:#eef3ef;height:5px;border-radius:9px;overflow:hidden}.bar{height:100%;background:#428b6c;transition:width .25s ease;width:0}.list{list-style:none;padding:6px 16px;margin:0}.item{display:flex;align-items:center;gap:10px;min-height:65px;border-bottom:1px solid #edf0ee;padding:9px 4px}.item:last-child{border:0}.item label{display:flex;align-items:center;gap:14px;flex:1;cursor:pointer;min-width:0;padding:8px 4px}.item input{appearance:none;-webkit-appearance:none;flex-shrink:0;width:22px;height:22px;border:1.5px solid #ccd7d0;border-radius:6px;background:#fff;margin:0;cursor:pointer;display:grid;place-content:center}.item input:checked{background:#428b6c;border-color:#428b6c}.item input:checked:after{content:"";width:9px;height:5px;border-left:2px solid white;border-bottom:2px solid white;transform:translateY(-1px) rotate(-45deg)}.item span{font-size:15px;line-height:1.6;overflow-wrap:anywhere}.item.done span{text-decoration:line-through;color:#9aa69f}.delete{display:grid;place-items:center;border:0;background:transparent;width:36px;height:36px;border-radius:8px;color:#9aa69f}.delete:hover{color:#b46464;background:#faf0ef}.delete svg{width:17px;height:17px}.empty{padding:32px 16px;text-align:center;font-size:14px;color:#819087;line-height:1.8}.add{display:flex;gap:9px;padding:20px 24px 24px}.add input{min-width:0;flex:1;background:#f7f9f7;border:1px solid #e1e8e3;border-radius:10px;padding:13px 14px;font-size:14px;color:#23352e}.add input::placeholder{color:#9aa69f}.add button{border:0;border-radius:10px;background:#2f7255;color:white;padding:0 18px;font-size:14px;font-weight:600;white-space:nowrap}.add button:hover{background:#245c43}.bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 2px;gap:12px}.hint{font-size:12px;color:#8b978f}.reset{border:0;background:transparent;color:#728278;display:flex;align-items:center;gap:6px;padding:8px 4px;font-size:13px}.reset svg{width:15px;height:15px}.reset:hover{color:#2f7255}.reset:disabled{opacity:.45;cursor:default}.notice{min-height:24px;font-size:13px;color:#428b6c;text-align:center;line-height:1.8}.foot{margin-top:42px;text-align:center;color:#a0aaa3;font-size:11px;letter-spacing:1px}@media(max-width:480px){.shell{padding:32px 18px 24px}.brand{margin-bottom:30px}h1{font-size:26px}.status{padding:22px}.add{padding:16px 20px 22px}.bottom{align-items:flex-start}.hint{max-width:175px;line-height:1.8}.foot{margin-top:24px}}@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+</style>
+</head>
+<body>
+<main class="shell">
+<div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="7" width="16" height="14" rx="3"/><path d="M8 7V5a4 4 0 0 1 8 0v2M8 11v2m8-2v2"/></svg>MEETING CHECKLIST</div>
+<h1>大石の打合せの持ち物</h1>
+<p class="intro">出かける前に、ひとつずつ。<br>準備できた持ち物にチェックを入れましょう。</p>
+<section class="card" aria-label="持ち物チェックリスト">
+<div class="status"><div class="status-top"><span class="status-label" id="status-label">準備の進み具合</span><span class="count" id="count" aria-live="polite"></span></div><div class="track" role="progressbar" aria-label="準備の進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" id="bar"></div></div></div>
+<ul class="list" id="list"></ul>
+<form class="add" id="add-form"><input id="new-item" aria-label="追加する持ち物" placeholder="持ち物を追加…" maxlength="100" autocomplete="off" required><button type="submit">＋ 追加</button></form>
+</section>
+<div class="bottom"><span class="hint" id="save-hint">このブラウザに自動で保存されます</span><button class="reset" id="reset" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1.5 8M4 4v6h6"/></svg>チェックをリセット</button></div>
+<div class="notice" id="notice" role="status"></div>
+<footer class="foot">準備を整えて、いい打ち合わせを。</footer>
+</main>
+<script>
+const KEY='meeting-checklist-v1';
+const defaults=['ノートパソコン','充電器・ケーブル','名刺','打ち合わせ資料','筆記用具・ノート','スマートフォン'];
+let items=defaults.map((name,index)=>({id:'default-'+index,name,done:false}));
+try{const saved=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(saved)&&saved.every(i=>i&&typeof i.id==='string'&&typeof i.name==='string'&&typeof i.done==='boolean'))items=saved;}catch{}
+const list=document.getElementById('list'),input=document.getElementById('new-item'),notice=document.getElementById('notice');
+function save(){try{localStorage.setItem(KEY,JSON.stringify(items));}catch{document.getElementById('save-hint').textContent='保存できないため、このページ内で保持します';}}
+function render(){
+list.replaceChildren();
+if(!items.length){const empty=document.createElement('li');empty.className='empty';empty.textContent='持ち物はまだありません。下の欄から追加しましょう。';list.append(empty);}
+items.forEach(item=>{const row=document.createElement('li');row.className='item'+(item.done?' done':'');const label=document.createElement('label');const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=item.done;checkbox.addEventListener('change',()=>{item.done=checkbox.checked;row.classList.toggle('done',item.done);save();updateProgress();notice.textContent='';});const name=document.createElement('span');name.textContent=item.name;label.append(checkbox,name);const remove=document.createElement('button');remove.type='button';remove.className='delete';remove.setAttribute('aria-label',item.name+'を削除');remove.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7m4-7v7"/></svg>';remove.addEventListener('click',()=>{const index=items.indexOf(item);items=items.filter(i=>i!==item);save();render();notice.textContent='「'+item.name+'」を削除しました';const next=list.querySelectorAll('.delete');if(next.length)next[Math.min(index,next.length-1)].focus();else input.focus();});row.append(label,remove);list.append(row);});updateProgress();}
+function updateProgress(){const done=items.filter(i=>i.done).length,total=items.length,percent=total?Math.round(done/total*100):0;document.getElementById('count').innerHTML='<strong>'+done+'</strong> / '+total;document.getElementById('bar').style.width=percent+'%';document.querySelector('[role="progressbar"]').setAttribute('aria-valuenow',percent);document.getElementById('status-label').textContent=total&&done===total?'準備完了。いってらっしゃい！':'準備の進み具合';document.getElementById('reset').disabled=done===0;}
+document.getElementById('add-form').addEventListener('submit',event=>{event.preventDefault();const name=input.value.trim();if(!name){input.value='';input.focus();return;}items.push({id:globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2),name,done:false});save();render();input.value='';input.focus();notice.textContent='「'+name+'」を追加しました';});
+document.getElementById('reset').addEventListener('click',()=>{items.forEach(item=>item.done=false);save();render();notice.textContent='すべてのチェックを外しました';});
+render();
+</script>
+</body>
+</html>
